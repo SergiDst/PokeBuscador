@@ -21,7 +21,7 @@ Esta aplicación web es una PokeDex interactiva que te permite obtener informaci
 ## Instalación
 
 1.  Clona este repositorio en tu máquina local.
-2.  Abre el archivo `index.html` en tu navegador web preferido.
+2.  Abre el archivo `prueba.html` en tu navegador web preferido.
 3.  ¡Disfruta explorando la PokeDex!
 
 ## Tecnologías Utilizadas
