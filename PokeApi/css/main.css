@@ -1,0 +1,74 @@
+.fondo {
+    background-image:linear-gradient(rgb(174, 187, 190) , rgb(105, 202, 231)) ;
+}
+
+.fondoPoke {
+    background-color: #dc3545
+}
+
+.gif {
+    background-image: url(../images/Shiny.gif);
+    background-position: bottom;
+    position: relative;
+}
+
+.Poke{
+    width: 470px;
+    height: 470px;
+}
+
+.gmaxAnim {
+    content: url(../images/Gigamax.png);
+    position: relative;
+    content: center;
+    width: 475px;
+    height: 475px;
+    animation: crecer 2.5s;
+}
+
+@keyframes crecer {
+    0% { transform: scale(0.3); opacity: 0.5;}
+    50% {transform: scale(0.5); opacity: 0.5;}
+    75% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.9; }
+}
+
+.formaAnim {
+    content: url(../images/CambioForma.png);
+    position: relative;
+    content: center;
+    width: 475px;
+    height: 475px;
+    animation: giro 2.5s;
+}
+
+@keyframes giro {
+    0% { transform: scale(0.5) rotate(0deg); opacity: 0.7; }
+    99% { transform: scale(1) rotate(359deg); opacity: 1; }
+    100% { transform: scale(1) rotate(360deg); opacity: 0.8; }
+}
+
+.megaAnim {
+    content: url(../images/Mega3.png);
+    position: relative;
+    width: 475px;
+    height: 475px;
+    animation: respiracion 2s;
+}
+
+@keyframes respiracion {
+    0% { transform: scale(0.5); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+}
+
+@font-face {
+    font-family: 'PokeFuente';
+    src: url('fonts/pkmndp.ttf');
+}
+
+body, .btn, .progress-bar {
+    font-family: 'PokeFuente';
+    font-size: 20px;
+    text-transform: uppercase;
+}
