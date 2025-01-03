@@ -1,0 +1,120 @@
+
+.fondoPoke {
+    background-color: #dc3545
+}
+
+.gif {
+    background-image: url(../images/Shiny.gif);
+    background-position: bottom;
+    position: relative;
+}
+
+.Poke{
+    width: 50vh;
+    height: 50vh;
+}
+
+.gmaxAnim {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content: url(../images/Gigamax.png);
+    width: 70vh;
+    height: 50vh;
+    animation: crecer 2.5s;
+}
+
+@keyframes crecer {
+    0% { transform: scale(0.3); opacity: 0.5;}
+    50% {transform: scale(0.5); opacity: 0.5;}
+    75% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.9; }
+}
+
+.formaAnim {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content: url(../images/CambioForma.png);
+    width: 70vh;
+    height: 50vh;
+    animation: giro 2.5s;
+}
+
+@keyframes giro {
+    0% { transform: scale(0.5) rotate(0deg); opacity: 0.7; }
+    99% { transform: scale(1) rotate(359deg); opacity: 1; }
+    100% { transform: scale(1) rotate(360deg); opacity: 0.8; }
+}
+
+.megaAnim {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content: url(../images/Mega3.png);
+    width: 70vh;
+    height: 50vh;
+    animation: respiracion 2s;
+}
+
+@keyframes respiracion {
+    0% { transform: scale(0.5); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+}
+
+@font-face {
+    font-family: 'PokeFuente';
+    src: url('fonts/pkmndp.ttf');
+}
+
+body, .btn, .progress-bar {
+    font-family: 'PokeFuente';
+    font-size: 2.8vh;
+    text-transform: uppercase;
+}
+
+.container {
+    display: flex;
+    height: 80vh;
+    width: 200vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1.6vh;
+    background-image:linear-gradient(rgb(174, 187, 190) , rgb(105, 202, 231)) ;
+    padding: 0.8vh;
+    border-radius: 8px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.salmon {
+    grid-column: span 2;
+    grid-row: span 3;
+}
+
+.broccoli {
+    grid-column: span 2;
+    grid-row: span 3;
+}
+
+.tamago {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+.tamago button {
+    margin: 0 5px;
+}
