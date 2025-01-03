@@ -1,30 +1,27 @@
 $(document).ready(function () {
-    var artyom = new Artyom();
+    let artyom = new Artyom();
 
-    var nombres = []
+    let nombres = []
 
     $.ajax({
         url: "https://pokeapi.co/api/v2/pokemon-species/?offset=0&limit=1025",
         contentType: "application/json",
         success: function (data) {
-            for (var i = 0; i < data.results.length; i++) {
+            for (let i = 0; i < data.results.length; i++) {
                 nombres.push(data.results[i].name)
             }
 
         }
     })
 
-    //console.log(nombres)
-
-
     $("#buscar").on("click", function () {
         $.ajax({
             url: "https://pokeapi.co/api/v2/pokemon-species/" + $("#label").val().toLowerCase(),
             contentType: "application/json",
             success: function (species) {
-                for (var i = 0; i < species.varieties.length; i++) {
+                for (let i = 0; i < species.varieties.length; i++) {
                     if (species.varieties[i].is_default == true) {
-                        var pokeUrl = species.varieties[i].pokemon.url
+                        let pokeUrl = species.varieties[i].pokemon.url
                         $.ajax({
                             url: pokeUrl,
                             contentType: "application/json",
@@ -51,10 +48,10 @@ $(document).ready(function () {
                                     url: "https://pokeapi.co/api/v2/pokemon-species/" + $("#label").val().toLowerCase(),
                                     contentType: "application/json",
                                     success: function (species) {
-                                        var mega = 0
-                                        var gmax = 0
-                                        for (var i = 0; i < species.varieties.length; i++) {
-                                            var forma = species.varieties[i].pokemon.name
+                                        let mega = 0
+                                        let gmax = 0
+                                        for (let i = 0; i < species.varieties.length; i++) {
+                                            let forma = species.varieties[i].pokemon.name
                                             if (species.varieties[i].is_default != true) {
                                                 if (forma.includes("gmax")) {
                                                     gmax++
@@ -132,7 +129,7 @@ $(document).ready(function () {
         setTimeout(function () {
             $("#Poke").removeClass("gif");
         }, 1500);
-        var poke = $("#NomForma").text();
+        let poke = $("#NomForma").text();
         //console.log(poke)
         $.ajax({
             url: "https://pokeapi.co/api/v2/pokemon/" + poke,
@@ -152,7 +149,7 @@ $(document).ready(function () {
     })
 
     $("#btnGrito").on("click", function () {
-        var poke = $("#NomForma").text();
+        let poke = $("#NomForma").text();
         $.ajax({
             url: "https://pokeapi.co/api/v2/pokemon/" + poke,
             contentType: "application/json",
@@ -165,12 +162,12 @@ $(document).ready(function () {
     })
 
     $("#btnGmax").on("click", function () {
-        var poke = ""
+        let poke = ""
         $("#Poke").addClass("gmaxAnim")
         setTimeout(function () {
             $("#Poke").removeClass("gmaxAnim");
         }, 2500);
-        var numGmax = $("#NumGmax").text();
+        let numGmax = $("#NumGmax").text();
         if (numGmax == 2) {
             poke = $("#NomForma").text();
             $.ajax({
@@ -207,11 +204,10 @@ $(document).ready(function () {
                 }
             })
         }
-
     })
 
     $("#btnForma").on("click", function () {
-        var poke = $("#NumPoke").text();
+        let poke = $("#NumPoke").text();
         //console.log(poke)
         $.ajax({
             url: "https://pokeapi.co/api/v2/pokemon/" + poke,
@@ -241,7 +237,7 @@ $(document).ready(function () {
     })
 
     $("#btnMega").on("click", function () {
-        var numMegas = $("#NumMegas").text();
+        let numMegas = $("#NumMegas").text();
         //console.log(numMegas)
         if (numMegas == 2) {
             //console.log("entro")
@@ -253,7 +249,7 @@ $(document).ready(function () {
                 }, 1500);
                 $('#modalMega').modal('hide')
                 //console.log("entro en mega x")
-                var poke = $("#FormaMega").text();
+                let poke = $("#FormaMega").text();
                 $.ajax({
                     url: "https://pokeapi.co/api/v2/pokemon/" + poke,
                     contentType: "application/json",
@@ -275,7 +271,7 @@ $(document).ready(function () {
                 }, 1500);
                 $('#modalMega').modal('hide')
                 //console.log("entro en mega Y")
-                var poke = $("#FormaMegaY").text();
+                let poke = $("#FormaMegaY").text();
                 $.ajax({
                     url: "https://pokeapi.co/api/v2/pokemon/" + poke,
                     contentType: "application/json",
@@ -297,7 +293,7 @@ $(document).ready(function () {
                 $("#Poke").removeClass("megaAnim");
             }, 1500);
             //console.log("una mega")
-            var poke = $("#FormaMega").text();
+            let poke = $("#FormaMega").text();
             $.ajax({
                 url: "https://pokeapi.co/api/v2/pokemon/" + poke,
                 contentType: "application/json",
@@ -316,7 +312,10 @@ $(document).ready(function () {
 
     })
 
-    function cargarEntrada() {
+    
+})
+
+function cargarEntrada() {
 
         artyom.initialize({
             lang: "es-ES",
@@ -332,9 +331,9 @@ $(document).ready(function () {
             url: "https://pokeapi.co/api/v2/pokemon-species/" + $("#label").val().toLowerCase(),
             contentType: "application/json",
             success: function (species) {
-                var txt = "hola"
-                for (var i = 0; i < species.flavor_text_entries.length; i++) {
-                    var idioma = species.flavor_text_entries[i].language.name
+                let txt = "Los datos de la entrada no se encontraron en el idioma Español."
+                for (let i = 0; i < species.flavor_text_entries.length; i++) {
+                    let idioma = species.flavor_text_entries[i].language.name
                     if (idioma == "es") {
                         $("#txtEntrada").html(`<p>${species.flavor_text_entries[i].flavor_text}</p>`)
                         $('#modalEntrada').modal('show');
@@ -354,12 +353,11 @@ $(document).ready(function () {
             artyom.fatality()
         }, 1000)
     }
-})
 
 function cargarStats(data) {
-    for (var j = 0; j < data.stats.length; j++) {
-        var statName = data.stats[j].stat.name;
-        var baseStat = data.stats[j].base_stat;
+    for (let j = 0; j < data.stats.length; j++) {
+        let statName = data.stats[j].stat.name;
+        let baseStat = data.stats[j].base_stat;
 
         switch (statName) {
             case "hp":
@@ -398,8 +396,8 @@ function actualizarAncho(selector, valor) {
 }
 
 function cargarTipos(data) {
-    for (var i = 0; i < data.types.length; i++) {
-        var typeName = data.types[i].type.name;
+    for (let i = 0; i < data.types.length; i++) {
+        let typeName = data.types[i].type.name;
 
         if (data.types[i].slot == 1) {
             actualizarImagenTipo("#imagenTipo", typeName);
@@ -411,7 +409,7 @@ function cargarTipos(data) {
 }
 
 function actualizarImagenTipo(selector, typeName) {
-    var imagenSrc;
+    let imagenSrc;
     switch (typeName) {
         case "steel":
             imagenSrc = "images/Acero.png";
@@ -475,19 +473,18 @@ function actualizarImagenTipo(selector, typeName) {
 }
 
 function cargarHabilidades(data) {
-    for (var i = 0; i < data.abilities.length; i++) {
-        // var numHab = 0
-        var slot = data.abilities[i].slot
+    for (let i = 0; i < data.abilities.length; i++) {
+        let slot = data.abilities[i].slot
         //numHab++
         switch (slot) {
             case 1:
-                var hab1 = data.abilities[i].ability.name
+                let hab1 = data.abilities[i].ability.name
                 $.ajax({
                     url: "https://pokeapi.co/api/v2/ability/" + hab1,
                     contentType: "application/json",
                     success: function (ability) {
                         for (let j = 0; j < ability.names.length; j++) {
-                            var idioma = ability.names[j].language.name
+                            let idioma = ability.names[j].language.name
                             if (idioma == "es") {
                                 $("#Hab1").html(`<p>${ability.names[j].name}</p>`)
                             }
@@ -497,13 +494,13 @@ function cargarHabilidades(data) {
                 break
 
             case 2:
-                var hab2 = data.abilities[i].ability.name
+                let hab2 = data.abilities[i].ability.name
                 $.ajax({
                     url: "https://pokeapi.co/api/v2/ability/" + hab2,
                     contentType: "application/json",
                     success: function (ability) {
                         for (let j = 0; j < ability.names.length; j++) {
-                            var idioma = ability.names[j].language.name
+                            let idioma = ability.names[j].language.name
                             if (idioma == "es") {
                                 $("#Hab2").html(`<p>${ability.names[j].name}</p>`)
                             }
@@ -513,13 +510,13 @@ function cargarHabilidades(data) {
                 break
 
             case 3:
-                var hab3 = data.abilities[i].ability.name
+                let hab3 = data.abilities[i].ability.name
                 $.ajax({
                     url: "https://pokeapi.co/api/v2/ability/" + hab3,
                     contentType: "application/json",
                     success: function (ability) {
                         for (let j = 0; j < ability.names.length; j++) {
-                            var idioma = ability.names[j].language.name
+                            let idioma = ability.names[j].language.name
                             if (idioma == "es") {
                                 if (ability.names[j].name == $("#Hab1").text()) {
                                     $("#Hab3").html(`<p></p>`)
